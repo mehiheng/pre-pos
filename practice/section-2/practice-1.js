@@ -1,5 +1,11 @@
 'use strict';
 
 function countSameElements(collection) {
-  return '实现练习要求，并改写该行代码。';
+  for(var i=0;i<collection.length;i++)
+  {
+	  for(var n=0;n<collection.lenth;n++)
+	  {
+		if(collection[i]) 
+	  }
+  }
 }
