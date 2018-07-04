@@ -3,39 +3,55 @@
 function countSameElements(collection) {
   var result=Array();
   var res=Array();
-  collection.sort();
+  var collectionA=Array();
   for(var i=0;i<collection.length;i++)
   {
-	  var j=0;
+	 var j=0;
 	   var re = /\W/;
 	  if( re.test(collection[i]) )
-	  {var temp=Array();
-       temp=collection[i].split("-");
-	    temp=collection[i].split("[");
-		temp=collection[i].split("]");
-		temp=collection[i].split(":");
-       collection[i]=temp[0];
-	   j=parseInt(temp[1]);
-	   res.push([collection[i],j]);
-      }
-	  j=0;
-	  for(var n=i;n<collection.length;n++)
 	  {
-		if(collection[i]==collection[n])
+		  var temp=Array();
+  if((collection[i].indexOf("-"))!=-1)
+  {temp=collection[i].split("-");}
+   
+	   if(( collection[i].indexOf("[" ))!=-1)
+	  {
+       temp=collection[i].split("[");
+	  }
+	  if(( collection[i].indexOf(":"))!=-1)
+	  {
+	  temp=collection[i].split(":");
+	  }
+	   collection[i]=temp[0];
+       j=parseInt(temp[1]);
+	    for(var h=1;h<j;h++)
+	   {collectionA.push(temp[0]);}
+	  
+  }
+  collectionA.push(collection[i]);
+  }
+	
+     for(var f=0;f<collectionA.length;f++)
+ {
+	 var t=0;
+	  for(var n=f;n<collectionA.length;n++)
+	  {
+		if(collectionA[f]==collectionA[n])
 		{
-			j++;
+			t++;
 		}			
 	  }
-	  res.push([collection[i],j]);  
-        i+=j;  
-		i=i-1;
+	  res.push([collectionA[f],t]);  
+        f+=t;  
+		f=f-1;
   }
   for(var a=0;a<res.length;a++)  
 {  
 var b=Object();
-b.key=res[a][0];
-b.count=res[a][1];
+b.name=res[a][0];
+b.summary=res[a][1];
  result.push(b);  
 }  
   return result;
 }
+
